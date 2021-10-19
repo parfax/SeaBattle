@@ -1,0 +1,6 @@
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\bin\Debug\SeaBattle.exe
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\bin\Debug\SeaBattle.pdb
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\obj\Debug\SeaBattle.csprojAssemblyReference.cache
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\obj\Debug\SeaBattle.csproj.CoreCompileInputs.cache
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\obj\Debug\SeaBattle.exe
+C:\Users\AdminPC\RiderProjects\ConsoleApplication2\SeaBattle\obj\Debug\SeaBattle.pdb
