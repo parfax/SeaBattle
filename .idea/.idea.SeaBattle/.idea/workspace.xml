@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9a6db79-5c1f-4363-88a5-0c15b5aa2fd6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SeaBattle/Game.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SeaBattle/Menu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApplication2/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApplication2/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApplication2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApplication2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/ConsoleApplication2.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/Properties/AssemblyInfo.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/SeaFightUserList.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/Users.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/bin/Debug/ConsoleApplication2.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/bin/Debug/ConsoleApplication2.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/bin/Debug/Users.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/obj/Debug/ConsoleApplication2.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/obj/Debug/ConsoleApplication2.csproj.FileListAbsolute.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/obj/Debug/ConsoleApplication2.csprojAssemblyReference.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/obj/Debug/ConsoleApplication2.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApplication2/obj/Debug/ConsoleApplication2.pdb" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/SeaBattle/Field.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SeaBattle/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaBattle/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaBattle/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeaBattle/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaBattle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeaBattle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/SeaBattle.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/SeaBattle.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/bin/Debug/SeaBattle.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/bin/Debug/SeaBattle.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/bin/Debug/SeaBattle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/bin/Debug/SeaBattle.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SeaBattle/obj/Debug/SeaBattle.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +32,9 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/SeaBattle/Program.cs" />
       <option value="$PROJECT_DIR$/SeaBattle/Menu.cs" />
+      <option value="$PROJECT_DIR$/SeaBattle/Player.cs" />
       <option value="$PROJECT_DIR$/SeaBattle/Game.cs" />
+      <option value="$PROJECT_DIR$/SeaBattle/Field.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1zj9ZRbPN4vpYiYW83FCIWI973B" />
@@ -45,6 +43,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34991708" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -86,6 +86,9 @@
       <updated>1634650685263</updated>
       <workItem from="1634650689164" duration="7003000" />
       <workItem from="1634658497694" duration="9772000" />
+      <workItem from="1636102381686" duration="2522000" />
+      <workItem from="1636397004968" duration="405000" />
+      <workItem from="1636409832539" duration="4230000" />
     </task>
     <servers />
   </component>

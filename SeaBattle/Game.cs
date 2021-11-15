@@ -7,36 +7,30 @@ namespace SeaBattle
     public class Game
     {
         // [* CONFIGURATION *]
-        private static readonly int width = 20; // Игровое поле
-        private static readonly int height = 20; // Игровое поле
-        public static int letter, number, shipCount = 0, botShipCount = 0;
-        private static readonly char[,] field = new char[height, width];
-        private static readonly char[,] botField = new char[height, width];
-        private static readonly char[,] showBotField = new char[height, width];
-
-        private static readonly char[]
-            Alphabet =
-            {
-                'а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'к',
-                'л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','ю','я'
-            };
+        private const int fieldSize = 10; // Игровое поле
+        public static int letter, number;
+        private static readonly char[,] showBotField = new char[fieldSize, fieldSize];
         
         private static string message;
         static Random rand = new Random();
         private static bool is_game_end;
+        
+        private static Field playerField = new Field();
+        private static Field botField = new Field();
 
         public static void Play()
         {
             Title = "Морской бой";
 
 
-            for (var i = 0; i < height; i++)
-                for (var j = 0; j < width; j++)
+            for (var i = 0; i < fieldSize; i++)
+                for (var j = 0; j < fieldSize; j++)
                     showBotField[i, j] = '~';
-            generate_field(field, ref shipCount);
-            Draw(field, 0);
-            generate_field(botField, ref botShipCount);
-            Draw(botField, height+3);
+
+            
+            playerField.Generate(fieldSize);
+            botField.Generate(fieldSize);
+            
             visualizeGame();
 
             while (!is_game_end)
@@ -48,15 +42,15 @@ namespace SeaBattle
 
         private static void GetInput()
         {
-            SetCursorPosition(width+20,11);
+            SetCursorPosition(fieldSize+20,11);
             Write("Куда стрелять? Введите координаты: ");
             
             
             var input = Convert.ToChar(Read());
-            var ind = Array.IndexOf(Alphabet, input);
+            var ind = Array.IndexOf(Field.Alphabet, input);
 
             if (!int.TryParse(ReadLine(), out number)) return;
-            if(number<=height && (ind >= 0 && ind <= width))
+            if(number<=fieldSize && (ind >= 0 && ind <= fieldSize))
             {
                 letter = ind;
                 Hit(number - 1, letter);
@@ -67,15 +61,15 @@ namespace SeaBattle
         private static void visualizeGame()
         {
             Clear();
-            Draw(field, 0);
-            Draw(showBotField, height+3);
-            SetCursorPosition(width+20, 7);
+            Draw(playerField.field, 0);
+            Draw(showBotField, fieldSize+3);
+            SetCursorPosition(fieldSize+20, 7);
             Write("[ИНФОРМАЦИЯ]");
-            SetCursorPosition(width+20, 8);
-            Write($"Кол-во ваших кораблей: {shipCount}");
-            SetCursorPosition(width+20, 9);
-            Write($"Кол-во кораблей бота: {botShipCount}");
-            SetCursorPosition(width+20, 10);
+            SetCursorPosition(fieldSize+20, 8);
+            Write($"Кол-во ваших кораблей: {playerField.shipQuantity}");
+            SetCursorPosition(fieldSize+20, 9);
+            Write($"Кол-во кораблей бота: {botField.shipQuantity}");
+            SetCursorPosition(fieldSize+20, 10);
             Write(message);
         }
 
@@ -84,65 +78,53 @@ namespace SeaBattle
             if (showBotField[y, x] == '*' || showBotField[y, x] == 'X')
                 message = "Нельзя стрелять в эту клетку";
 
-            else if (botField[y, x] == '~')
+            else if (botField.field[y, x] == '~')
             {
                 showBotField[y, x] = '*';
                 message = "Промах!";
-                BotHit(rand.Next(1, 10), rand.Next(1, 10));
+                BotHit(rand.Next(fieldSize), rand.Next(fieldSize));
             }
-            else if (botField[y, x] == '\u25A0')
+            else if (botField.field[y, x] == '\u25A0')
             {
                 showBotField[y, x] = 'X';
                 message = "Попадание!";
-                BotHit(rand.Next(1, 10), rand.Next(1, 10));
-                botShipCount--;
+                BotHit(rand.Next(fieldSize), rand.Next(fieldSize));
+                botField.shipQuantity--;
             }
         }
 
         private static void BotHit(int x, int y)
         {
-            switch (field[x, y])
+            while (true)
             {
-                case '*':
-                case 'X':
-                    BotHit(rand.Next(1, 10), rand.Next(1, 10));
-                    break;
-                case '~':
-                    field[x, y] = '*';
-                    break;
-                case '\u25A0':
-                    field[x, y] = 'X';
-                    shipCount--;
-                    break;
-            }
-        }
-
-        private static void generate_field(char[,] field, ref int ships)
-        {
-            ships = 0;
-            for (var x = 0; x < height; x++)
-            for (var y = 0; y < width; y++)
-            {
-                char symbol;
-                if (rand.Next(1, 100) < 20)
+                switch (playerField.field[x, y])
                 {
-                    symbol = '\u25A0';
-                    ships++;
+                    case '*':
+                    case 'X':
+                        x = rand.Next(fieldSize);
+                        y = rand.Next(fieldSize);
+                        continue;
+                    case '~':
+                        playerField.field[x, y] = '*';
+                        break;
+                    case '\u25A0':
+                        playerField.field[x, y] = 'X';
+                        playerField.shipQuantity--;
+                        break;
                 }
-                else
-                    symbol = '~';
 
-                field[x, y] = symbol;
+                break;
             }
         }
+        
 
         private static void Draw(char[,] field, int crusr)
         {
-            for (var i = 0; i < width; i++)
+            for (var i = 0; i < fieldSize; i++)
             {
                 SetCursorPosition(2 * i + 3, crusr);
-                Write(Alphabet[i]);
-                for (var j = 0; j < height; j++)
+                Write(Field.Alphabet[i]);
+                for (var j = 0; j < fieldSize; j++)
                 {
                     SetCursorPosition(0, j + crusr + 1);
                     Write(j+1);
@@ -151,6 +133,9 @@ namespace SeaBattle
 
                     SetCursorPosition(3, j + crusr);
                     SetCursorPosition(2 * j + 3, i + crusr + 1);
+                    
+                    // if(field[i, j] == '~') ForegroundColor = ConsoleColor.Blue;
+                    // else ForegroundColor = ConsoleColor.White;
                     Write(field[i, j]);
                 }
 
