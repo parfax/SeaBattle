@@ -1,6 +1,6 @@
 ﻿using System;
 using static System.Console;
-using System.Linq;
+using static System.ConsoleColor;
 
 namespace SeaBattle
 {
@@ -12,11 +12,17 @@ namespace SeaBattle
         private static readonly char[,] showBotField = new char[fieldSize, fieldSize];
         
         private static string message;
-        static Random rand = new Random();
-        private static bool is_game_end;
         
+        private static bool is_game_end;
+
+        #region Components
+
+        static Random rand = new Random();
+        private static UI _ui = new UI();
         private static Field playerField = new Field();
         private static Field botField = new Field();
+
+        #endregion
 
         public static void Play()
         {
@@ -64,7 +70,7 @@ namespace SeaBattle
             Draw(playerField.field, 0);
             Draw(showBotField, fieldSize+3);
             SetCursorPosition(fieldSize+20, 7);
-            Write("[ИНФОРМАЦИЯ]");
+            _ui.Write(Yellow,"[ИНФОРМАЦИЯ]");
             SetCursorPosition(fieldSize+20, 8);
             Write($"Кол-во ваших кораблей: {playerField.shipQuantity}");
             SetCursorPosition(fieldSize+20, 9);
@@ -129,14 +135,13 @@ namespace SeaBattle
                     SetCursorPosition(0, j + crusr + 1);
                     Write(j+1);
                     SetCursorPosition(2, j + crusr + 1);
-                    Write('│');
+                    _ui.Write(Yellow,"│");
 
                     SetCursorPosition(3, j + crusr);
                     SetCursorPosition(2 * j + 3, i + crusr + 1);
                     
-                    // if(field[i, j] == '~') ForegroundColor = ConsoleColor.Blue;
-                    // else ForegroundColor = ConsoleColor.White;
-                    Write(field[i, j]);
+                    if(field[i, j] == '~') _ui.Write(Blue, "~");
+                    else Write(field[i, j]);
                 }
 
                 WriteLine();

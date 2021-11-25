@@ -18,6 +18,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="SeaBattle.csproj" t="IncludeRecursive" />
+        <e p="UI.cs" t="Include" />
       </e>
       <e p="SeaBattle.sln" t="IncludeFlat" />
     </e>
